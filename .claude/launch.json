@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kvkk-kapisi",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["app.py"],
+      "port": 7860
+    }
+  ]
+}
