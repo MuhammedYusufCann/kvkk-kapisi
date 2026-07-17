@@ -80,7 +80,7 @@ GEMINI_API_KEY=...
 
 ```bash
 python app.py          # http://127.0.0.1:7860
-python -m unittest     # 33 test
+python -m unittest     # 37 test
 ```
 
 İlk çalıştırmada NER modeli (~440 MB) bir kez indirilir, sonrasında yerel cache'ten okunur.
