@@ -226,18 +226,18 @@ class DusenOturumTest(unittest.TestCase):
     """
 
     def test_kasasiz_etiketli_metin_gorunur_hata_verir(self):
-        from app import soru_sor
+        from app import OTURUM_HATASI_BASLIGI, soru_sor
 
         acik, ham, istek, denetim = soru_sor("Hasta [KISI_1] geldi.", "kim geldi", None)
-        self.assertIn("Oturum sifirlanmis", denetim)
+        self.assertIn(OTURUM_HATASI_BASLIGI, denetim)
         self.assertEqual(acik, "")
         self.assertEqual(ham, "")
 
     def test_bos_kasa_da_ayni_sekilde_yakalanir(self):
-        from app import soru_sor
+        from app import OTURUM_HATASI_BASLIGI, soru_sor
 
         _, _, _, denetim = soru_sor("Hasta [KISI_1] geldi.", "kim geldi", Vault())
-        self.assertIn("Oturum sifirlanmis", denetim)
+        self.assertIn(OTURUM_HATASI_BASLIGI, denetim)
 
     def test_etiketsiz_metin_kasasiz_da_calisabilir(self):
         # Icinde kisisel veri bulunmayan belge icin kasa bos olmasi normal, bu
@@ -251,7 +251,7 @@ class DusenOturumTest(unittest.TestCase):
             _, _, _, denetim = app.soru_sor(
                 "Bu belgede kisisel veri yok.", "ozetle", Vault()
             )
-        self.assertNotIn("Oturum sifirlanmis", denetim)
+        self.assertNotIn(app.OTURUM_HATASI_BASLIGI, denetim)
         cagri.assert_called_once()
 
     def test_guard_llme_hic_gitmeden_doner(self):
